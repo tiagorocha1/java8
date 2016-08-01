@@ -28,16 +28,8 @@ public class OrdenaStrings {
 		 * Interface List: default void sort(Comparator<? super E> c) {
 		 * Collections.sort(this, c); }
 		 */
-		palavras.sort(new Comparator<String>() {
-
-			public int compare(String s1, String s2) {
-				if (s1.length() < s2.length())
-					return -1;
-				if (s1.length() > s2.length())
-					return 1;
-				return 0;
-			}
-		});
+		
+		palavras.sort((String s1, String s2) -> Integer.compare(s1.length(), s2.length()));
 
 		System.out.println(palavras);
 
@@ -58,7 +50,7 @@ public class OrdenaStrings {
 		});
 */
 		// caso o método receba apenas um parâmetro é possível remover os parênteses
-		// e como o método possui apenas um statement é possível remover as chaves
+		// e como o método possui apenas um statement é possível também remover as chaves
 		palavras.forEach( palavra -> System.out.println(palavra) ); 
 	}
 }
