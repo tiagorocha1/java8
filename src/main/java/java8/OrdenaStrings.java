@@ -29,7 +29,7 @@ public class OrdenaStrings {
 		 * Collections.sort(this, c); }
 		 */
 		
-		palavras.sort((String s1, String s2) -> Integer.compare(s1.length(), s2.length()));
+		palavras.sort((String s1, String s2) -> s1.length() - s2.length());
 
 		System.out.println(palavras);
 
