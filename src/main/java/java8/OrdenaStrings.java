@@ -29,7 +29,8 @@ public class OrdenaStrings {
 		 * Collections.sort(this, c); }
 		 */
 		
-		palavras.sort((String s1, String s2) -> s1.length() - s2.length());
+		//palavras.sort((String s1, String s2) -> s1.length() - s2.length());
+		palavras.sort(Comparator.comparing(String::length));
 
 		System.out.println(palavras);
 
@@ -51,6 +52,7 @@ public class OrdenaStrings {
 */
 		// caso o método receba apenas um parâmetro é possível remover os parênteses
 		// e como o método possui apenas um statement é possível também remover as chaves
-		palavras.forEach( palavra -> System.out.println(palavra) ); 
+		//palavras.forEach( palavra -> System.out.println(palavra) ); 
+		palavras.forEach(System.out::println);
 	}
 }
