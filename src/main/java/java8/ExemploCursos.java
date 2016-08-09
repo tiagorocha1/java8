@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalDouble;
+import java.util.OptionalDouble;import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
 *
@@ -43,6 +45,7 @@ public class ExemploCursos {
 		cursos.sort(Comparator.comparing(Curso::getAlunos));
 		
 		System.out.println("Cursos com pelo menos 100 alunos matriculados:");
+		
 		cursos.stream()
 			.filter( c -> c.getAlunos() >= 100)
 			.forEach(c -> System.out.println(c.getNome()));
@@ -61,14 +64,25 @@ public class ExemploCursos {
 		System.out.println("Total de Alunos: "+sum);
 		
 
-		Optional<Curso> optionalCurso = cursos.stream()
-			.filter(c -> c.getAlunos() >= 100)
-			.findAny();
+		/*Optional<Curso> optionalCurso = cursos.stream()
+											.filter(c -> c.getAlunos() >= 100)
+											.findAny();
+		
+		Curso curso = optionalCurso.orElse(null);
+		
+		curso.ifPresent(c -> System.out.println(c.getNome()));
+		*/
 		
 		cursos.stream()
 				.filter(c -> c.getAlunos() >= 100)
 				.findAny()
 				.ifPresent(c -> System.out.println(c.getNome()));
+		
+		List<Curso> listCursos = cursos.stream()
+			 	.filter(c -> c.getAlunos() >= 100)
+			 	.collect(Collectors.toList());
+		
+		
 			
 			
 
