@@ -3,6 +3,7 @@ package java8;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -29,6 +30,11 @@ class Curso {
 
     public int getAlunos() {
     	return alunos;
+    }
+    
+    @Override
+    public String toString() {
+    	return this.nome;
     }
 }
 
@@ -82,7 +88,16 @@ public class ExemploCursos {
 			 	.filter(c -> c.getAlunos() >= 100)
 			 	.collect(Collectors.toList());
 		
+		System.out.println(listCursos);
 		
+		cursos.parallelStream()
+		 	.filter(c -> c.getAlunos() >= 100)
+		 	.collect(Collectors.toMap(
+		 				c -> c.getNome(), 
+		 				c -> c.getAlunos()))
+		 	.forEach((nome,alunos) -> System.out.println(nome+" tem "+alunos+" alunos"));
+		
+
 			
 			
 
