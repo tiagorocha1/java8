@@ -3,6 +3,8 @@ package java8;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 /**
 *
@@ -50,8 +52,25 @@ public class ExemploCursos {
 			.mapToInt(Curso::getAlunos)
 			.sum();	
 		
+		OptionalDouble media = cursos.stream()
+									.filter(c -> c.getAlunos() >= 100)
+									.mapToInt(Curso::getAlunos)
+									.average();	
+		
 		System.out.println("**********************");
 		System.out.println("Total de Alunos: "+sum);
+		
+
+		Optional<Curso> optionalCurso = cursos.stream()
+			.filter(c -> c.getAlunos() >= 100)
+			.findAny();
+		
+		cursos.stream()
+				.filter(c -> c.getAlunos() >= 100)
+				.findAny()
+				.ifPresent(c -> System.out.println(c.getNome()));
+			
+			
 
 	}
 
