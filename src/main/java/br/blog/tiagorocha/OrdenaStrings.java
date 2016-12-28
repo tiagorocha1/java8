@@ -1,4 +1,4 @@
-package java8;
+package br.blog.tiagorocha;
 
 import java.util.Arrays;
 import java.util.Collections;
